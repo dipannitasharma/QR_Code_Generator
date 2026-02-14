@@ -6,7 +6,7 @@ import QRPreview from "./components/QRPreview";
 
 const App = () => {
   const [qrData, setQrData] = useState("");
-  const [size, setSize] = useState(100);
+  const [size, setSize] = useState(200);
   const [fgColor, setFgColor] = useState("#000000");
   const [bgColor, setBgColor] = useState("#ffffff");
 
