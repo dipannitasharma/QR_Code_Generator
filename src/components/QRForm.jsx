@@ -38,13 +38,20 @@ const QRForm = ({
 
 
   return (
-    <div
-      className="w-full max-w-md mt-5 p-5
-                 bg-white/10 backdrop-blur-lg
-                 border border-white/20
-                 rounded-2xl shadow-xl
-                 text-white space-y-6"
-    >
+  <div
+  className="w-full md:w-[480px] h-[460px]
+             bg-white/10 backdrop-blur-lg
+             border border-white/20
+             rounded-xl shadow-xl mt-5
+             flex flex-col text-white"
+>
+
+
+<div className="flex-1 overflow-y-auto custom-scroll p-5 space-y-6 pr-2">
+
+    {/* all inputs and controls here */}
+
+
       <h2 className="text-lg font-semibold tracking-wide">
         Customize Your QR Code
       </h2>
@@ -153,24 +160,27 @@ const QRForm = ({
     Leave empty to use default name
   </p>
 </div>
+</div>
 
-
-      {/* Reset Button */}
-      <button
-        onClick={() => {
-          setQrData("");
-          setSize(200);
-          setFgColor("#000000");
-          setBgColor("#ffffff");
-        }}
-        className="w-full py-3 rounded-xl
-                   bg-white/20 hover:bg-white/30
-                   transition duration-300 font-medium"
-      >
-        Reset
-      </button>
+     {/* Fixed Reset Button */}
+<div className="p-5 border-t border-white/20">
+  <button
+    onClick={() => {
+      setQrData("");
+      setSize(200);
+      setFgColor("#000000");
+      setBgColor("#ffffff");
+      setFileName("");
+    }}
+    className="w-full py-3 rounded-xl
+               bg-white/20 hover:bg-white/30
+               transition duration-300 font-medium"
+  >
+    Reset
+  </button>
+    </div>
     </div>
   );
-};
+};      
 
 export default QRForm;
