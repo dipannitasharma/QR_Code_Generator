@@ -2,6 +2,8 @@ import React from "react";
 import QRCode from "react-qr-code";
 
 const QRPreview = ({ value, size, fgColor, bgColor }) => {
+  const defaultQR = "https://your-qr-app.vercel.app";
+
   const handleDownload = (format) => {
     const svg = document.getElementById("qr-code");
     if (!svg) return;
@@ -17,7 +19,6 @@ const QRPreview = ({ value, size, fgColor, bgColor }) => {
       canvas.width = size;
       canvas.height = size;
 
-      // JPG does not support transparency
       if (format === "jpeg") {
         ctx.fillStyle = bgColor || "#ffffff";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -40,51 +41,49 @@ const QRPreview = ({ value, size, fgColor, bgColor }) => {
       btoa(unescape(encodeURIComponent(svgString)));
   };
 
+  const displayValue = value || defaultQR;
+
   return (
-    <div className="w-full md:w-1/2 flex md:justify-end">
+    <div className="w-full md:w-1/2 flex md:justify-center">
       <div
-        className="w-full md:w-auto p-8
+        className="w-full max-w-md p-8
                    bg-white/10 backdrop-blur-lg
                    border border-white/20
                    rounded-2xl shadow-xl
                    flex flex-col items-center justify-center
-                   min-h-65
+                   min-h-75 mt-0 md:mt-5
                    transition-all duration-300"
       >
-        {value ? (
-          <>
-            <QRCode
-              id="qr-code"
-              value={value}
-              size={size}
-              fgColor={fgColor}
-              bgColor={bgColor}
-            />
+        <div className="p-4 bg-white rounded-xl border border-white shadow-md">
+          <QRCode
+            id="qr-code"
+            value={displayValue}
+            size={size}
+            fgColor={value ? fgColor : "#000000"}
+            bgColor="#ffffff"
+          />
+        </div>
 
-            <div className="mt-6 flex gap-4">
-              <button
-                onClick={() => handleDownload("png")}
-                className="px-5 py-2 rounded-xl
-                           bg-white/20 hover:bg-white/30
-                           text-white transition duration-300"
-              >
-                Download PNG
-              </button>
+        {value && (
+          <div className="mt-6 flex gap-4">
+            <button
+              onClick={() => handleDownload("png")}
+              className="px-5 py-2 rounded-xl
+                         bg-white/20 hover:bg-white/30
+                         text-white transition duration-300"
+            >
+              Download PNG
+            </button>
 
-              <button
-                onClick={() => handleDownload("jpeg")}
-                className="px-5 py-2 rounded-xl
-                           bg-white/20 hover:bg-white/30
-                           text-white transition duration-300"
-              >
-                Download JPG
-              </button>
-            </div>
-          </>
-        ) : (
-          <p className="text-white/60 text-sm text-center">
-            QR preview will appear here
-          </p>
+            <button
+              onClick={() => handleDownload("jpeg")}
+              className="px-5 py-2 rounded-xl
+                         bg-white/20 hover:bg-white/30
+                         text-white transition duration-300"
+            >
+              Download JPG
+            </button>
+          </div>
         )}
       </div>
     </div>
