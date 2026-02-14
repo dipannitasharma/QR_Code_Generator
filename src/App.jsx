@@ -18,7 +18,8 @@ const App = () => {
       <Header />
 
       <main className="w-full max-w-5xl mx-auto px-4 pt-20 pb-8">
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-5">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-center gap-10">
+
           <QRForm
                 qrData={qrData}
                 setQrData={setQrData}
