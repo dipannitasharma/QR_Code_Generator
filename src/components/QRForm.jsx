@@ -37,7 +37,7 @@ const QRForm = ({
 
   return (
     <div
-      className="w-full max-w-md mt-5 p-6
+      className="w-full max-w-md mt-5 p-5
                  bg-white/10 backdrop-blur-lg
                  border border-white/20
                  rounded-2xl shadow-xl
