@@ -1,24 +1,49 @@
 import React from "react";
 
 const QRForm = ({
-  qrData,
-  setQrData,
-  size,
-  setSize,
-  fgColor,
-  setFgColor,
-  bgColor,
-  setBgColor,
-}) => {
-  return (
-    <div className="w-full md:w-1/2 mt-10 p-6
-                    bg-white/10 backdrop-blur-lg
-                    border border-white/20
-                    rounded-2xl shadow-xl
-                    text-white space-y-6">
+            qrData,
+            setQrData,
+            size,
+            setSize,
+            fgColor,
+            setFgColor,
+            bgColor,
+            setBgColor,
+            }) => {
+            const handleSizeChange = (e) => {
+            const value = e.target.value;
 
-      {/* Title */}
-      <h2 className="text-xl font-semibold tracking-wide">
+            // Allow empty input while typing
+            if (value === "") {
+                setSize("");
+                return;
+            }
+
+            const numberValue = Number(value);
+
+            if (!isNaN(numberValue)) {
+                setSize(numberValue);
+            }
+            };
+
+            const handleSizeBlur = () => {
+            if (!size || size < 100) {
+                setSize(100);
+            } else if (size > 400) {
+                setSize(400);
+            }
+            };
+
+
+  return (
+    <div
+      className="w-full max-w-md mt-5 p-6
+                 bg-white/10 backdrop-blur-lg
+                 border border-white/20
+                 rounded-2xl shadow-xl
+                 text-white space-y-6"
+    >
+      <h2 className="text-lg font-semibold tracking-wide">
         Customize Your QR Code
       </h2>
 
@@ -39,25 +64,45 @@ const QRForm = ({
         />
       </div>
 
-      {/* Size Selector */}
-      <div>
+            {/* Size Input */}
+            
+        <div>
         <label className="block mb-2 text-sm text-white/80">
-          QR Size
+            QR Size
         </label>
-        <input
-          type="number"
-          value={size}
-          onChange={(e) => setSize(Number(e.target.value))}
-          className="w-full p-3 rounded-xl
-                     bg-white/20 border border-white/30
-                     text-white focus:outline-none"/>
-      </div>
+
+        <div className="relative">
+            <input
+        type="number"
+        min={100}
+        max={400}
+        step={10}
+        value={size}
+        onChange={handleSizeChange}
+        onBlur={handleSizeBlur}
+        className="w-full p-3 pr-12 rounded-xl
+                    bg-white/20 border border-white/30
+                    text-white focus:outline-none
+                    focus:ring-2 focus:ring-white/40"
+        />
+
+
+            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-white/60">
+                px
+        </span>
+    </div>
+
+  <p className="mt-1 text-xs text-white/50">
+    Min: 100px • Max: 400px
+  </p>
+</div>
+
 
       {/* Color Pickers */}
       <div className="grid grid-cols-2 gap-6">
         <div>
           <label className="block mb-2 text-sm text-white/80">
-            Foreground Color
+            Foreground
           </label>
           <input
             type="color"
@@ -69,7 +114,7 @@ const QRForm = ({
 
         <div>
           <label className="block mb-2 text-sm text-white/80">
-            Background Color
+            Background
           </label>
           <input
             type="color"
