@@ -18,7 +18,7 @@ const QRPreview = ({ value, size, fgColor, bgColor, fileName }) => {
         className="w-full h-115
                    bg-white/10 backdrop-blur-lg
                    border border-white/20
-                   rounded-2xl shadow-xl mt-5
+                   rounded-xl shadow-xl mt-5
                    flex flex-col"
       >
         {/* QR Preview Section (Fixed Size) */}
