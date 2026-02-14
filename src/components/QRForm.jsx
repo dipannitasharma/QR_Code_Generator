@@ -9,6 +9,8 @@ const QRForm = ({
             setFgColor,
             bgColor,
             setBgColor,
+            fileName,
+            setFileName
             }) => {
             const handleSizeChange = (e) => {
             const value = e.target.value;
@@ -124,6 +126,34 @@ const QRForm = ({
           />
         </div>
       </div>
+      {/* File Name */}
+<div>
+  <label className="block mb-2 text-sm text-white/80">
+    Download File Name
+  </label>
+
+  <div className="relative">
+    <input
+      type="text"
+      value={fileName}
+      onChange={(e) => setFileName(e.target.value)}
+      placeholder="e.g. my-qr-code"
+      className="w-full p-3 pr-12 rounded-xl
+                 bg-white/20 border border-white/30
+                 text-white placeholder-white/60
+                 focus:outline-none focus:ring-2 focus:ring-white/40"
+    />
+
+    <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-white/60">
+      .png / .jpg
+    </span>
+  </div>
+
+  <p className="mt-1 text-xs text-white/50">
+    Leave empty to use default name
+  </p>
+</div>
+
 
       {/* Reset Button */}
       <button

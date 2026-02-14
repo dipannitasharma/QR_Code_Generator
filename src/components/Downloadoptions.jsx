@@ -1,6 +1,6 @@
 import React from "react";
 
-const DownloadOptions = ({ size, bgColor }) => {
+const DownloadOptions = ({ size, bgColor, fileName }) => {
   const handleDownload = (format) => {
     const svg = document.getElementById("qr-code");
     if (!svg) return;
@@ -25,9 +25,14 @@ const DownloadOptions = ({ size, bgColor }) => {
 
       const imageFile = canvas.toDataURL(`image/${format}`);
 
+      const cleanName = fileName
+  ? fileName.trim().replace(/[^a-zA-Z0-9-_]/g, "-")
+  : "qr-code";
+
+
       const link = document.createElement("a");
       link.href = imageFile;
-      link.download = `qr-code.${format === "jpeg" ? "jpg" : "png"}`;
+      link.download = `${cleanName}.${format === "jpeg" ? "jpg" : "png"}`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);

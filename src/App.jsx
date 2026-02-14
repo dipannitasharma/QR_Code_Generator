@@ -3,12 +3,15 @@ import { useState } from "react";
 import Header from "./components/Header";
 import QRForm from "./components/QRForm";
 import QRPreview from "./components/QRPreview";
+import DownloadOptions from "./components/Downloadoptions";
 
 const App = () => {
   const [qrData, setQrData] = useState("");
   const [size, setSize] = useState(200);
   const [fgColor, setFgColor] = useState("#000000");
   const [bgColor, setBgColor] = useState("#ffffff");
+  const [fileName, setFileName] = useState("");
+
 
 
   return (
@@ -29,6 +32,8 @@ const App = () => {
                 setFgColor={setFgColor}
                 bgColor={bgColor}
                 setBgColor={setBgColor}
+                fileName={fileName}
+                setFileName={setFileName}
           />
 
           <QRPreview
@@ -36,7 +41,9 @@ const App = () => {
             size={size}
             fgColor={fgColor}
             bgColor={bgColor}
+            fileName={fileName}
           />
+
 
         </div>
       </main>
