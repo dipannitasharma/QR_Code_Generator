@@ -4,7 +4,7 @@ import DownloadOptions from "./Downloadoptions";
 
 const QRPreview = ({ value, size, fgColor, bgColor, fileName }) => {
 
-  const defaultQR = "https://your-qr-app.vercel.app";
+  const defaultQR = "https://q-rism.vercel.app/";
 
   const PREVIEW_SIZE = 220; // Fixed preview size
 
