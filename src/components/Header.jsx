@@ -13,9 +13,8 @@ const Header = () => {
                  px-4 sm:px-6 py-3"
     >
       <h1 className="text-lg sm:text-2xl font-semibold text-white tracking-wide">
-        QR Code Generator
+        QRISM
       </h1>
-
       <a
         href="https://github.com/dipannitasharma"
         target="_blank"
