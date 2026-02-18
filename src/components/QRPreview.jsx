@@ -3,13 +3,9 @@ import QRCode from "react-qr-code";
 import DownloadOptions from "./Downloadoptions";
 
 const QRPreview = ({ value, size, fgColor, bgColor, fileName }) => {
-
   const defaultQR = "https://q-rism.vercel.app/";
-
   const PREVIEW_SIZE = 220; // Fixed preview size
-
   const displayValue = value || defaultQR;
-
   return (
     <div className="w-full md:w-120 flex justify-center">
       <div
