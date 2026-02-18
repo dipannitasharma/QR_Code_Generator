@@ -8,8 +8,6 @@ const QRPreview = ({ value, size, fgColor, bgColor, fileName }) => {
 
   const PREVIEW_SIZE = 220; // Fixed preview size
 
-  
-
   const displayValue = value || defaultQR;
 
   return (
